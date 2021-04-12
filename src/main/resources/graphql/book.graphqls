@@ -8,6 +8,7 @@ type Book {
 
 extend type Query {
     findAllBooks(id: ID): [Book]!
+    book(id: ID) : Book
     countBooks: Int!
 }
 

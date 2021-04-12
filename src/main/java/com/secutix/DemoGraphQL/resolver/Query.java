@@ -22,16 +22,12 @@ public class Query implements GraphQLQueryResolver {
 		this.bookRepository = bookRepository;
 	}
 
-	public Iterable<Book> findAllBooks() {
-		return bookRepository.findAll();
-	}
-
 	public Iterable<Book> findAllBooks(Long id) {
 		return id == null ? bookRepository.findAll() : bookRepository.findAllById(Collections.singleton(id));
 	}
 
-	public Iterable<Author> findAllAuthors() {
-		return authorRepository.findAll();
+	public Book book(Long id) {
+		return bookRepository.findById(id).orElse(null);
 	}
 
 	public Iterable<Author> findAllAuthors(Long id, String firstName) {
