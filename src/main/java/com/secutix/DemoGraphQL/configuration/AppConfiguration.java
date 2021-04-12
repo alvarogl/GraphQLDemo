@@ -66,10 +66,17 @@ public class AppConfiguration {
 	@Bean
 	public CommandLineRunner demo(AuthorRepository authorRepository, BookRepository bookRepository) {
 		return args -> {
-			Author author = new Author("Herbert", "Schildt");
-			authorRepository.save(author);
+			final Author tolkien = new Author("J.R.R", "Tolkien");
+			authorRepository.save(tolkien);
 
-			bookRepository.save(new Book("Java: A Beginner's Guide, Sixth Edition", "0071809252", 728, author));
+			bookRepository.save(new Book("The Fellowship of the Ring", "8439596200", 423, tolkien));
+			bookRepository.save(new Book("The Two Towers", "8445071769", 352, tolkien));
+			bookRepository.save(new Book("The Return of the King", "8439596243", 416, tolkien));
+
+			final Author schildt = new Author("Herbert", "Schildt");
+			authorRepository.save(schildt);
+
+			bookRepository.save(new Book("Java: A Beginner's Guide, Sixth Edition", "0071809252", 728, schildt));
 		};
 	}
 }
